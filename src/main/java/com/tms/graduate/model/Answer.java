@@ -10,15 +10,18 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "answers")
+public class Answer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String login;
-    private String password;
-    @Enumerated(EnumType.STRING)
-    private ROLE role;
+    @OneToOne
+    @JoinColumn(name = "question_id")
+    private Question question;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+    private String answer;
 
 }

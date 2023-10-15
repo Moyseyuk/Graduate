@@ -19,6 +19,7 @@ public class Test {
     private Long id;
     private String name;
     @OneToMany
+    @JoinColumn(name = "test_id")
     private List<Question> questions;
 
 }

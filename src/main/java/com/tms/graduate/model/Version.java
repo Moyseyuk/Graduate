@@ -3,23 +3,27 @@ package com.tms.graduate.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "users_tests")
-public class UserTest {
+@Table(name = "versions")
+public class Version {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date deadline;
-    @OneToMany
-    private List<Test> tests;
+    @OneToOne
+    @JoinColumn(name = "test_id")
+    private Test test;
+    @UpdateTimestamp
+    private Date updated;
+    @Enumerated(EnumType.STRING)
+    private STATUS status;
 
 }

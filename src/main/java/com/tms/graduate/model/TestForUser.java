@@ -5,20 +5,24 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "tests_for_users")
+public class TestForUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String login;
-    private String password;
-    @Enumerated(EnumType.STRING)
-    private ROLE role;
+    @OneToOne
+    @JoinColumn(name = "test_id")
+    private Test test;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+    private Date deadline;
 
 }

@@ -5,21 +5,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "questions")
-public class Question {
+@Table(name = "roles")
+public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String question;
-    @OneToMany
-    @JoinColumn(name = "question_id")
-    private List<Answer> answers;
+    private String name;
+    @ManyToMany(mappedBy = "roles")
+    private List<User> users = new ArrayList<>();
 
 }

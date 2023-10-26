@@ -24,5 +24,7 @@ public class TestForUser {
     @JoinColumn(name = "user_id")
     private User user;
     private Date deadline;
+    @Enumerated(EnumType.STRING)
+    private STATUS status;
 
 }

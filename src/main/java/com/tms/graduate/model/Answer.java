@@ -16,12 +16,7 @@ public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne
-    @JoinColumn(name = "question_id")
-    private Question question;
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private User user;
     private String answer;
+    private boolean correct;
 
 }
